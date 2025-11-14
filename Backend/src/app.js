@@ -7,7 +7,7 @@ const myAuth = require('./utils/auth');
 const authRoutes = require('./routes/authRoutes');
 
 //Middlewares
-//app.use(corse({origin:"http://localhost:5173"}));
+app.use(cors({origin:"http://localhost:5173"}));
 app.use(express.json());
 app.use(myAuth);
 app.use('/api/auth',authRoutes);

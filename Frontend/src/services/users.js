@@ -3,7 +3,7 @@ import { config } from './config';
 
 export async function register(firstName, lastName, email, password,confirmPassword, phone, birthDate){
     try {
-        const url = `${config.server}/register`;
+        const url = `${config.server}/api/auth/register`;
         const body = { firstName, lastName, email, password, confirmPassword, phone, birthDate };
 
         const response = await axios.post(url,body);
@@ -15,7 +15,7 @@ export async function register(firstName, lastName, email, password,confirmPassw
 
 export async function login(email, password){
     try {
-        const url = `${config.server}/login`;
+        const url = `${config.server}/api/auth/login`;
         const body = { email, password };
         const response = await axios.post(url,body);
 

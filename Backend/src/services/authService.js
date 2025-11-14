@@ -6,7 +6,11 @@ const authUtils = require('../utils/auth');
 
 
 const authService = {
-    register: async (first_name, last_name, email, password, mobile, birth) => {
+    register: async (first_name, last_name, email, password,confirmPassword, mobile, birthDate) => {
+        
+        if(password !== confirmPassword){
+            throw new Error("Password do not match");
+        }
         const existingUser = await User.findByEmail(email);
         if (existingUser) {
             throw new Error('User already exists');
@@ -14,7 +18,7 @@ const authService = {
 
         const hashpassword = await bcrypt.hash(password, config.saltRounds || 10);
       
-        const userId = await User.create(first_name, last_name, email, hashpassword, mobile, birth);
+        const userId = await User.create(first_name, last_name, email, hashpassword, mobile, birthDate);
         return userId;
     },
 

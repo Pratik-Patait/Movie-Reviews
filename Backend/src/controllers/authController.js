@@ -6,8 +6,8 @@ const authController = {
 
     register: async (req, res) => {
         try {
-            const { first_name, last_name, email, password, mobile, birth } = req.body;
-            await authService.register(first_name, last_name, email, password, mobile, birth);
+            const { first_name, last_name, email, password, confirmPassword, mobile, birthDate } = req.body;
+            await authService.register(first_name, last_name, email, password,confirmPassword, mobile, birthDate);
             res.send(result.createResult(null,{message:'User registered successfully'}));    
     }
     catch (error) {

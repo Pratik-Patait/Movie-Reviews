@@ -7,7 +7,7 @@ const User = {
         const[rows] = await pool.execute(sql,[email]);
         return rows[0];
         }catch(error){
-            console.erroe("Database Error(findByEmail):",error);
+            console.error("Database Error(findByEmail):",error);
             throw error;
         }
     },
